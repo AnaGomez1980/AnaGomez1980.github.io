@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+  <channel>
+    <title>Blog de Tecnología aplicada a las agencias de viaje</title>
+    <link>https://www.tecnologiaparaviajarblog.com</link>
+    <description>Blog sobre las últimas noticias y avances tecnológicos en el sector de la venta de viajes.</description>
+    <language>es</language>
+    <pubDate>15 Apr 2025 09:00:00 +0000</pubDate>
+
+    <item>
+      <title>Innovaciones en las excursiones por realidad aumentada</title>
+      <link>https://www.tecnologiaparaviajarblog.com/innovaciones-en-las-excursiones-por-realidad-aumentada</link>
+      <description>Análisis sobre la repercusión que podria tener el uso de esta tecnologia.</description>
+      <pubDate>15 Apr 2025 10:00:00 +0000</pubDate>
+      <category>Realidad acumentada</category>
+    </item>
+
+    <item>
+      <title>Inteligencia Artificial en el sector Hotelero</title>
+      <link>https://www.inteligenciaartificialenelsectorhoteleroblog.com/IA-para-apartamentos-turisticos-2025</link>
+      <description>Utilidad de la Inteligencia Artificial en la recepción de turistas en los alojamientos sin recepcion 24 hrs.</description>
+      <pubDate>15 Apr 2025 11:00:00 +0000</pubDate>
+      <category>Inteligencia Artificial</category>
+    </item>
+
+  </channel>
+</rss>

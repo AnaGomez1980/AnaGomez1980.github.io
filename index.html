@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mi XML en la Web</title>
+</head>
+<body>
+  <h1>Contenido del XML</h1>
+  <div id="contenido"></div>
+
+  <script>
+    fetch('tu-archivo.xml')
+      .then(response => response.text())
+      .then(data => {
+        const parser = new DOMParser();
+        const xml = parser.parseFromString(data, "text/xml");
+        
+        // Aquí depende de cómo esté estructurado tu XML
+        // Ejemplo: mostrar todos los nodos <item>
+        const items = xml.getElementsByTagName("item");
+        let html = "<ul>";
+        for (let i = 0; i < items.length; i++) {
+          html += "<li>" + items[i].textContent + "</li>";
+        }
+        html += "</ul>";
+        document.getElementById("contenido").innerHTML = html;
+      });
+  </script>
+</body>
+</html>
