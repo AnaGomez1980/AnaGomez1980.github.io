@@ -2,28 +2,67 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Mi XML en la Web</title>
+  <title>Noticias del Blog</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    h1 {
+      color: #2c3e50;
+    }
+    .item {
+      border-bottom: 1px solid #ccc;
+      padding: 15px 0;
+    }
+    .item h2 {
+      margin: 0;
+      font-size: 1.4em;
+    }
+    .item p {
+      margin: 5px 0;
+    }
+    .item .categoria {
+      font-style: italic;
+      color: #555;
+    }
+  </style>
 </head>
 <body>
-  <h1>Contenido del XML</h1>
-  <div id="contenido"></div>
+  <h1>Blog de Tecnología aplicada a las agencias de viaje</h1>
+  <div id="contenido">Cargando noticias...</div>
 
   <script>
-    fetch('tu-archivo.xml')
+    fetch('RSS.rss.xml')
       .then(response => response.text())
       .then(data => {
         const parser = new DOMParser();
         const xml = parser.parseFromString(data, "text/xml");
-        
-        // Aquí depende de cómo esté estructurado tu XML
-        // Ejemplo: mostrar todos los nodos <item>
         const items = xml.getElementsByTagName("item");
-        let html = "<ul>";
+        let html = "";
+
         for (let i = 0; i < items.length; i++) {
-          html += "<li>" + items[i].textContent + "</li>";
+          const title = items[i].getElementsByTagName("title")[0].textContent;
+          const link = items[i].getElementsByTagName("link")[0].textContent;
+          const description = items[i].getElementsByTagName("description")[0].textContent;
+          const pubDate = items[i].getElementsByTagName("pubDate")[0].textContent;
+          const category = items[i].getElementsByTagName("category")[0]?.textContent || "";
+
+          html += `
+            <div class="item">
+              <h2><a href="${link}" target="_blank">${title}</a></h2>
+              <p>${description}</p>
+              <p><strong>Fecha:</strong> ${pubDate}</p>
+              <p class="categoria">Categoría: ${category}</p>
+            </div>
+          `;
         }
-        html += "</ul>";
+
         document.getElementById("contenido").innerHTML = html;
+      })
+      .catch(error => {
+        document.getElementById("contenido").innerHTML = "Error al cargar el XML.";
+        console.error("Error cargando el XML:", error);
       });
   </script>
 </body>
